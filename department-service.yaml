@@ -4,6 +4,8 @@ server:
     context-path: /dept-api
 
 spring:
+  boot:
+    message: Hello Boss
 #   config:
 #     import: "configserver:http://localhost:9090"
 #  h2:
