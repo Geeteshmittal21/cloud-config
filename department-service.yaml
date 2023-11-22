@@ -5,7 +5,7 @@ server:
 
 spring:
   boot:
-    message: Hello Boss
+    message: Hi Boss
 #   config:
 #     import: "configserver:http://localhost:9090"
 #  h2:
