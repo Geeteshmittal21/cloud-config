@@ -5,6 +5,8 @@ server:
     context-path: /user-api
 
 spring:
+  boot:
+    message: Hello user
   # config:
   #   import: "configserver:http://localhost:9090"
   # h2:
