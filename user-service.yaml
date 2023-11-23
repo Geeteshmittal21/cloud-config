@@ -6,7 +6,7 @@ server:
 
 spring:
   boot:
-    message: Hello User Service
+    message: Hello User Service Updated
   # config:
   #   import: "configserver:http://localhost:9090"
   # h2:
