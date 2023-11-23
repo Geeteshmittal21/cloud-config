@@ -6,3 +6,11 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    org:
+      springframework:
+        web: DEBUG
