@@ -58,6 +58,12 @@ info:  # Application details which would be show in actuator/info endpoint
     
 #Circuit Breaker properties
 resilience4j:
+  retry:
+    instances:
+      USER-SERVICE:
+        registerHealthIndicator: true
+        maxRetryAttempts: 5
+        waitDuration: 2s
   circuitbreaker:
     instances:
       USER-SERVICE:
