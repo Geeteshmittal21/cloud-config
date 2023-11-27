@@ -63,7 +63,7 @@ resilience4j:
       USER-SERVICE:
         registerHealthIndicator: true
         failureRateThreshold: 60
-        mininumNumberOfCalls: 5
+        minimumNumberOfCalls: 5
         automaticTransitionFromOpenToHalfOpenEnabled: true
         waitDurationInOpenState: 5s
         permittedNumberOfCallsInHalfOpenState: 3
