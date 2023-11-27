@@ -7,24 +7,13 @@ server:
 spring:
   boot:
     message: Hello User Service Updated
-  # config:
-  #   import: "configserver:http://localhost:9090"
-  # h2:
-  #   console:
-  #     enabled: true
-  # application:
-  #   name: USER-SERVICE
   datasource:
     url: jdbc:mysql://localhost:3306/user_db
     username: root
     password: admin
-    #driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -39,25 +28,45 @@ logging:
       geetesh:
         user:
           service: debug
+          
 management:
   tracing:
     sampling:
-      probability: 1.0
+      probability: 1.0   #To publish all the traces(100%) to Micrometer so that same would be visible in Zipkin
   endpoints:
     web:
       exposure:
         include:
-          - "*"
+          - "*"   # To expose all the actuator endpoints
+  health:
+    circuitbreakers:
+      enabled: true
   info:
     env:
       enabled: true
   endpoint:
     health:
-      show-details: ALWAYS
+      show-details: ALWAYS #To show the details
     env:
       show-values: ALWAYS
-info:
+
+info:  # Application details which would be show in actuator/info endpoint
   app:
     name: User Service
     description: Spring boot application for User Service
-    version: 1.0.0
+    version: 1.0.0   
+    
+#Circuit Breaker properties
+resilience4j:
+  circuitbreaker:
+    instances:
+      USER-SERVICE:
+        registerHealthIndicator: true
+        failureRateThreshold: 60
+        mininumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 50
+        slidingWindowSize: 
