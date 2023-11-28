@@ -11,6 +11,10 @@ spring:
           uri: lb://DEPARTMENT-SERVICE
           predicates:
             - Path=/dept-api/**
+        - id: organization-service
+          uri: lb://ORGANIZATION-SERVICE
+          predicates:
+            - Path=/org-api/**
 
 management:
   tracing:
