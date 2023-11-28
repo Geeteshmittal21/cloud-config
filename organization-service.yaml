@@ -11,6 +11,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  boot:
+    message: Hello Organization Service
       
 logging:
   level:
