@@ -1,0 +1,9 @@
+tenant:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tenant1_dev
+    username: tenant1_dev_user
+    password: tenant1_dev_password
+  custom:
+    property: "Tenant 1 - Dev Environment"
+  feature-toggle:
+    new-feature-enabled: true
